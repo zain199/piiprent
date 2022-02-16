@@ -52,7 +52,7 @@ class AddressFinder extends State<AddressFind> {
     // TODO: implement build
     return Container(
       height: 49,
-      width: 343,
+
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(color: Color(0XFFD3DEEA))),

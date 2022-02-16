@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:piiprent/redesign_candidate_registration_form/controller/question_controller.dart';
@@ -157,7 +158,7 @@ class GeneralQues extends StatelessWidget {
                                     qcontroller.index.value - 1;
                               },
                         child: Text(
-                          "Back",
+                          translate("Back"),
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -274,7 +275,7 @@ class GeneralQues extends StatelessWidget {
                                                                 .onpressed(),
                         child: qcontroller.index.value < 8
                             ? Text(
-                                "Next",
+                                translate("Next"),
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,

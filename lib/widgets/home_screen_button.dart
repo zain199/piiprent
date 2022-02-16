@@ -61,7 +61,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                     : SizedBox(
                         height: 35.0,
                       ),
-                Text(widget.text, style: TextStyle(color: Colors.white)),
+                Expanded(child: Text(widget.text, style: TextStyle(color: Colors.white),maxLines: 1,overflow: TextOverflow.ellipsis,)),
               ],
             ),
             decoration: BoxDecoration(

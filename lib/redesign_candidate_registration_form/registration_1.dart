@@ -22,18 +22,22 @@ class RegistrasionPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.height - 60);
     return GetBuilder<RegistrationController>(builder: (controller) {
       return Scaffold(
         appBar: RegiAppbar(),
         body: Container(
-          height: 1500,
+          height: MediaQuery.of(context).size.height,
           child: ListView(
             controller: registrationController.homeController,
             shrinkWrap: true,
             physics: ScrollPhysics(),
             children: [
               StepBarForm(),
-              Obx(() => IndexedStack(
+              Obx(
+                () => Container(
+                  height:MediaQuery.of(context).size.height-200 ,
+                  child: IndexedStack(
                     index: registrationController.stepIndex.value,
                     children: [
                       Step1(),
@@ -41,7 +45,9 @@ class RegistrasionPage1 extends StatelessWidget {
                       Step3(),
                       Step4(),
                     ],
-                  )),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

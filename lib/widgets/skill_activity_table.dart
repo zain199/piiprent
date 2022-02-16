@@ -151,7 +151,7 @@ class _SkillActivityTableState extends State<SkillActivityTable> {
                                       width: 7,
                                     ),
                                     Text(
-                                      'ADD',
+                                      translate("ADD"),
                                       style: TextStyle(
                                         color: AppColors.blue,
                                         fontWeight: FontWeight.w500,

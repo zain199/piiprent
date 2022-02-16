@@ -70,7 +70,7 @@ class _PreviewScreenState extends State<PreviewScreen> {
           children: [
             Image.asset('images/company_banner.png'),
             _showErrorMessage
-                ? 'Please turn on internet'
+                ? Text('Please turn on internet')
                 : CircularProgressIndicator(),
           ],
         ),

@@ -51,7 +51,7 @@
     "button.times_only": "Vain aikatyötä",
     "button.peicework": "Osatyö tai yhdistelmä",
     "button.edit": "Muokata",
-    "button.take_photo": "Add photo",
+    "button.take_photo": "Lisää valokuva",
     "timesheet.status": "Tila",
     "timesheet.shift_started_at": "Vuoro alkoi",
     "timesheet.shift_ended_at": "Vuoro päättyi klo",
@@ -176,6 +176,10 @@
     "END_TIME": "LOPPU AIKA",
     "BREAK_TIME": "TAUON AIKA",
     "Activity": "Toiminta",
-    "AMOUNT": "MÄÄRÄ"
+    "AMOUNT": "MÄÄRÄ",
+    "ADD": "LISÄÄ",
+    "Back": "Takaisin",
+    "Next": "Seuraava",
+    "Done!": "Valmis!"
 
 }

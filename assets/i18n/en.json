@@ -176,6 +176,10 @@
     "END_TIME": "END TIME",
     "BREAK_TIME": "BREAK TIME",
     "Activity": "Activity",
-    "AMOUNT": "AMOUNT"
+    "AMOUNT": "AMOUNT",
+    "ADD": "ADD",
+    "Back": "Back",
+    "Next": "Next",
+    "Done!": "Done!"
 
 }

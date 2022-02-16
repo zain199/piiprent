@@ -51,7 +51,7 @@
     "button.times_only": "Ainult ajatöö",
     "button.peicework": "Kombineeritud või tükitöö",
     "button.edit": "Muuda",
-    "button.take_photo": "Add photo",
+    "button.take_photo": "Lisa foto",
     "timesheet.status": "Staatus",
     "timesheet.shift_started_at": "Vahetus algas kell",
     "timesheet.shift_ended_at": "Vahetus lõppes kell",
@@ -151,7 +151,7 @@
     "select.residency" :"Valige rahvus",
     "select.industry": "Valige tööstus",
     "select.skills" : "Valige oskused",
-    "button.use_camera": "Use Camera",
+    "button.use_camera": "kasuta kaamerat",
     "title1": "Härra.",
     "title2":     "Prl.",
     "title3":     "Proua.",
@@ -176,5 +176,9 @@
     "END_TIME": "LÕPUAEG",
     "BREAK_TIME":"VAHEAEG",
     "Activity":"Tegevus",
-    "AMOUNT": "AMOUNT"
+    "AMOUNT": "AMOUNT",
+     "ADD": "LISA",
+  "Back": "Tagasi",
+  "Next": "Järgmine",
+  "Done!": "Tehtud!"
 }

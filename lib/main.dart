@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
@@ -34,6 +36,7 @@ import 'package:piiprent/services/tag_service.dart';
 import 'package:piiprent/services/timesheet_service.dart';
 import 'package:piiprent/services/worktype_service.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,7 +70,10 @@ void main() async {
         Provider<CountryService>(create: (_) => CountryService()),
         Provider<TagService>(create: (_) => TagService()),
       ],
-      child: LocalizedApp(delegate, MyApp()),
+      child: LocalizedApp(delegate, DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => MyApp(), // Wrap your app
+      ),),
     ),
   );
 }
@@ -86,6 +92,24 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
+          useInheritedMediaQuery: true,
+        builder: (context, child) => ResponsiveWrapper.builder(
+            BouncingScrollWrapper(child: child),
+            minWidth: 360.0,
+            defaultScale: true,
+            breakpoints:const  [
+              ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+              ResponsiveBreakpoint.autoScale(800, name: TABLET,scaleFactor: 1.5),
+              ResponsiveBreakpoint.autoScale(1000, name: 'L TABLET' ,scaleFactor: 1.6),
+              ResponsiveBreakpoint.autoScale(1500, name: DESKTOP ,scaleFactor: 1.7),
+            ],
+            breakpointsLandscape: const[
+              ResponsiveBreakpoint.autoScaleDown(480, name: MOBILE),
+              ResponsiveBreakpoint.autoScaleDown(800, name: TABLET,scaleFactor: 1.5),
+              ResponsiveBreakpoint.autoScaleDown(1000, name: 'L TABLET' ,scaleFactor: 1.2),
+              ResponsiveBreakpoint.autoScaleDown(1500, name: DESKTOP ,scaleFactor: 1.3),
+            ]
+        ),
         supportedLocales: localizationDelegate.supportedLocales,
         locale: localizationDelegate.currentLocale,
         theme: new ThemeData(

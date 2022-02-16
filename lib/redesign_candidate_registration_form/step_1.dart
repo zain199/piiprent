@@ -67,55 +67,59 @@ class Step1 extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: Color(0XFF2196F3))),
-                        width: 164,
-                        height: 43,
-                        child: TextButton(
-                          onPressed: () {
-                            step1controller.onTapImage(false);
-                            print("image : ${registrationController.newimage.value}");
-                          },
-                          child: Text(
-                            translate('button.take_photo'),
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Roboto",
-                                color: Color(0XFF2196F3)),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12,
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Color(0XFF2196F3))),
+                          width: 164,
+                          height: 43,
+                          child: TextButton(
+                            onPressed: () {
+                              step1controller.onTapImage(false);
+                              print("image : ${registrationController.newimage.value}");
+                            },
+                            child: Text(
+                              translate('button.take_photo'),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "Roboto",
+                                  color: Color(0XFF2196F3)),
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(width: 5,),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(color: Color(0XFF2196F3))),
-                        width: 164,
-                        height: 43,
-                        child: TextButton(
-                          onPressed: () {
-                            step1controller.onTapImage(true);
-                            print("image : ${registrationController.newimage.value}");
-                          },
-                          child: Text(
-                            translate('button.use_camera'),
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: "Roboto",
-                                color: Color(0XFF2196F3)),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12,
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Color(0XFF2196F3))),
+                          width: 164,
+                          height: 43,
+                          child: TextButton(
+                            onPressed: () {
+                              step1controller.onTapImage(true);
+                              print("image : ${registrationController.newimage.value}");
+                            },
+                            child: Text(
+                              translate('button.use_camera'),
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "Roboto",
+                                  color: Color(0XFF2196F3)),
+                            ),
                           ),
                         ),
                       ),
@@ -172,159 +176,187 @@ class Step1 extends StatelessWidget {
             hedrtxt: translate('field.title').toUpperCase(),
           ),
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color: registrationController.title.value == translate('title1')
-                            ? Color(0XFF2196F3)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(3),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 82,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('title1'),
-                            groupValue: registrationController.title.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.titleSelected(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('title1'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color: registrationController.title.value == translate('title1')
-                                  ? Colors.white
-                                  : Color(0XFFBCC8D6)),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 10),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color: registrationController.title.value == translate('title1')
+                                ? Color(0XFF2196F3)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+                    width: 82,
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('title1'),
+                                groupValue: registrationController.title.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.titleSelected(val);
+                                  step1controller.onNxtpg();
+                                }),
+
+                        Expanded(
+                          child: Text(
+                            translate('title1'),
+                            maxLines: 1,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Roboto",
+                                color: registrationController.title.value == translate('title1')
+                                        ? Colors.white
+                                        : Color(0XFFBCC8D6)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  )),
                 ),
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 9, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color: registrationController.title.value == translate('title2')
-                            ? Color(0XFF2196F3)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(3),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 82,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('title2'),
-                            groupValue: registrationController.title.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.titleSelected(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('title2'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color: registrationController.title.value == translate('title2')
-                                  ? Colors.white
-                                  : Color(0XFFBCC8D6)),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 9, top: 10),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color: registrationController.title.value == translate('title2')
+                                ? Color(0XFF2196F3)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+                    width: 82,
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('title2'),
+                                groupValue: registrationController.title.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.titleSelected(val);
+                                  step1controller.onNxtpg();
+                                }),
+                        // SizedBox(width:5,),
+                        Expanded(
+                          child: Text(
+                            translate('title2'),
+                            maxLines: 1,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Roboto",
+                                color: registrationController.title.value == translate('title2')
+                                        ? Colors.white
+                                        : Color(0XFFBCC8D6)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  )),
                 ),
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 9, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color: registrationController.title.value == translate('title3')
-                            ? Color(0XFF2196F3)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(3),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 85,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('title3'),
-                            groupValue: registrationController.title.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.titleSelected(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('title3'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color:
-                                  registrationController.title.value == translate('title3')
-                                      ? Colors.white
-                                      : Color(0XFFBCC8D6)),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 9, top: 10),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color: registrationController.title.value == translate('title3')
+                                ? Color(0XFF2196F3)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+                    width: 85,
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('title3'),
+                                groupValue: registrationController.title.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.titleSelected(val);
+                                  step1controller.onNxtpg();
+                                }),
+                        // SizedBox(width:5,),
+                        Expanded(
+                          child: Text(
+                            translate('title3'),
+                            maxLines: 1,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Roboto",
+                                color:
+                                        registrationController.title.value == translate('title3')
+                                            ? Colors.white
+                                            : Color(0XFFBCC8D6)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  )),
                 ),
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 9, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color: registrationController.title.value == translate('title4')
-                            ? Color(0XFF2196F3)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(3),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 82,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('title4'),
-                            groupValue: registrationController.title.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.titleSelected(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('title4'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color: registrationController.title.value == translate('title4')
-                                  ? Colors.white
-                                  : Color(0XFFBCC8D6)),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 9, top: 10,right: 16),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color: registrationController.title.value == translate('title4')
+                                ? Color(0XFF2196F3)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+                    width: 82,
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('title4'),
+                                groupValue: registrationController.title.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.titleSelected(val);
+                                  step1controller.onNxtpg();
+                                }),
+                        // SizedBox(width:5,),
+                        Expanded(
+                          child: Text(
+                            translate('title4'),
+                            maxLines: 1,
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Roboto",
+                                color: registrationController.title.value == translate('title4')
+                                        ? Colors.white
+                                        : Color(0XFFBCC8D6),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  )),
                 ),
-              )),
-            )
-          ],
+              )
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20, left: 16),
@@ -332,91 +364,98 @@ class Step1 extends StatelessWidget {
             hedrtxt: translate('field.gender').toUpperCase(),
           ),
         ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color:
-                            registrationController.selectGender.value == translate('genderMale')
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 10),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color:
+                                registrationController.selectGender.value == translate('genderMale')
+                                    ? Color(0XFF2196F3)
+                                    : Colors.transparent,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('genderMale'),
+                                groupValue:
+                                    registrationController.selectGender.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.selctGender(val);
+                                  step1controller.onNxtpg();
+                                }),
+                        // SizedBox(width:5,),
+                        Text(
+                          translate('genderMale'),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Roboto",
+                              color:
+                              registrationController.selectGender.value ==
+                                              translate('genderMale')
+                                          ? Colors.white
+                                  : Color(0XFFBCC8D6)),
+                        ),
+                      ],
+                    ),
+                  )),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12, top: 10,right: 16),
+                  child: Obx(() => Container(
+                    decoration: BoxDecoration(
+                        color: registrationController.selectGender.value ==
+                                    translate('genderFemale')
                                 ? Color(0XFF2196F3)
                                 : Colors.transparent,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 173,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('genderMale'),
-                            groupValue:
-                                registrationController.selectGender.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.selctGender(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('genderMale'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color:
-                          registrationController.selectGender.value ==
-                                          translate('genderMale')
-                                      ? Colors.white
-                              : Color(0XFFBCC8D6)),
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Color(0XFFD3DEEA))),
+                    height: 39,
+
+                    child: Row(
+                      children: [
+                        Radio(
+                            splashRadius: 7.0,
+                                value: translate('genderFemale'),
+                                groupValue:
+                                    registrationController.selectGender.value,
+                                activeColor: Colors.white,
+                                onChanged: (val) {
+                                  step1controller.selctGender(val);
+                                  step1controller.onNxtpg();
+                                }),
+                        // SizedBox(width:5,),
+                        Text(
+                          translate('genderFemale'),
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Roboto",
+                              color:
+                              registrationController.selectGender.value ==
+                                              translate('genderFemale')
+                                          ? Colors.white
+                                  : Color(0XFFBCC8D6)),
+                        ),
+                      ],
                     ),
-                  ],
+                  )),
                 ),
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12, top: 10),
-              child: Obx(() => Container(
-                decoration: BoxDecoration(
-                    color: registrationController.selectGender.value ==
-                                translate('genderFemale')
-                            ? Color(0XFF2196F3)
-                            : Colors.transparent,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Color(0XFFD3DEEA))),
-                height: 39,
-                width: 173,
-                child: Row(
-                  children: [
-                    Radio(
-                        splashRadius: 7.0,
-                            value: translate('genderFemale'),
-                            groupValue:
-                                registrationController.selectGender.value,
-                            activeColor: Colors.white,
-                            onChanged: (val) {
-                              step1controller.selctGender(val);
-                              step1controller.onNxtpg();
-                            }),
-                    // SizedBox(width:5,),
-                    Text(
-                      translate('genderFemale'),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Roboto",
-                          color:
-                          registrationController.selectGender.value ==
-                                          translate('genderFemale')
-                                      ? Colors.white
-                              : Color(0XFFBCC8D6)),
-                    ),
-                  ],
-                ),
-              )),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20, left: 16),
@@ -448,61 +487,68 @@ class Step1 extends StatelessWidget {
             ),
               )),
         ),
-        Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 16),
-                  child: HintName(
-                    hedrtxt: translate('field.weight').toUpperCase(),
-                  ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, left: 16),
+                      child: HintName(
+                        hedrtxt: translate('field.weight').toUpperCase(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 16),
+                      child: TxtFeild(
+                        readonly: false,
+                        keytype: TextInputType.number,
+                        cntrlr: step1controller.wightcontroller,
+                        changeValdt: (weght) {
+                          registrationController.wight.value = weght;
+                          step1controller.onNxtpg();
+                        },
+                        pwdstr: false,
+                        hinttxt: "00",
+
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 16),
-                  child: TxtFeild(
-                    readonly: false,
-                    keytype: TextInputType.number,
-                    cntrlr: step1controller.wightcontroller,
-                    changeValdt: (weght) {
-                      registrationController.wight.value = weght;
-                      step1controller.onNxtpg();
-                    },
-                    pwdstr: false,
-                    hinttxt: "00",
-                    wdt: 169,
-                  ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, left: 16),
+                      child: HintName(
+                        hedrtxt: translate('field.height').toUpperCase(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, left: 16,right: 16),
+                      child: TxtFeild(
+                        readonly: false,
+                        keytype: TextInputType.number,
+                        cntrlr: step1controller.hetcontroller,
+                        changeValdt: (heigt) {
+                          registrationController.het.value = heigt;
+                          step1controller.onNxtpg();
+                        },
+                        pwdstr: false,
+                        hinttxt: "00",
+
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 16),
-                  child: HintName(
-                    hedrtxt: translate('field.height').toUpperCase(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 16),
-                  child: TxtFeild(
-                    readonly: false,
-                    keytype: TextInputType.number,
-                    cntrlr: step1controller.hetcontroller,
-                    changeValdt: (heigt) {
-                      registrationController.het.value = heigt;
-                      step1controller.onNxtpg();
-                    },
-                    pwdstr: false,
-                    hinttxt: "00",
-                    wdt: 169,
-                  ),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20, left: 16),
@@ -603,56 +649,60 @@ class Step1 extends StatelessWidget {
                 color: Color(0XFFD3DEEA),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 15, left: 16),
+                padding: const EdgeInsets.only(top: 15, left: 16,right: 16,bottom: 10),
                 child: Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(color: Color(0XFF2196F3))),
-                      width: 164,
-                      height: 43,
-                      child: TextButton(
-                        onPressed: () {
-                          step1controller.onBack();
-                        },
-                        child: Text(
-                          "Back",
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Roboto",
-                              color: Color(0XFF2196F3)),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(color: Color(0XFF2196F3))),
+                        width: double.infinity,
+                        height: 43,
+                        child: TextButton(
+                          onPressed: () {
+                            step1controller.onBack();
+                          },
+                          child: Text(
+                            translate("Back"),
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Roboto",
+                                color: Color(0XFF2196F3)),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 15,
                     ),
-                    Obx(() => Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: step1controller.isEnable.isTrue
-                                ? Color(0XFF2196F3)
-                                : Color(0XFFB8DFFF),
-                          ),
-                          width: 164,
-                          height: 43,
-                          child: TextButton(
-                            onPressed: () {
-                              step1controller.onindexChang();
-                              registrationController.scrollDown();
-                            },
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: "Roboto",
-                                  color: Colors.white),
+                    Expanded(
+                      child: Obx(() => Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: step1controller.isEnable.isTrue
+                                  ? Color(0XFF2196F3)
+                                  : Color(0XFFB8DFFF),
                             ),
-                          ),
-                        ))
+                            width: double.infinity,
+                            height: 43,
+                            child: TextButton(
+                              onPressed: () {
+                                step1controller.onindexChang();
+                                registrationController.scrollDown();
+                              },
+                              child: Text(
+                                translate("Next"),
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Roboto",
+                                    color: Colors.white),
+                              ),
+                            ),
+                          )),
+                    )
                   ],
                 ),
               )

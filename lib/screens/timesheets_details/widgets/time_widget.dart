@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class TimeButtonWidget extends StatefulWidget {
   TimeButtonWidget({Key key}) : super(key: key);
@@ -45,7 +46,7 @@ class _TimeButtonWidgetState extends State<TimeButtonWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Time',
+                translate('Time'),
                 style: TextStyle(fontSize: 16),
               ),
               SvgPicture.asset("images/icons/ic_time.svg"),

@@ -136,18 +136,16 @@ class _CandidateJobDetailsScreenState extends State<CandidateJobDetailsScreen> {
                 onPressed: () async {
                   showConcernDialog(()  {
                     try {
-                       _location.getLocation().then((data) {
-                         print('hello omar');
-                         _add(data.latitude, data.longitude);
-                         _mapController.animateCamera(
-                           CameraUpdate.newCameraPosition(
-                             CameraPosition(
-                               target: LatLng(data.latitude, data.longitude),
-                             ),
-                           ),
-                         );
-                      });
-
+                      _mapController.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: LatLng( double.parse(widget.jobOffer.latitude),
+                              double.parse(widget.jobOffer.longitude),
+                            ),
+                            zoom: 15
+                          ),
+                        ),
+                      );
                     } catch (e) {
                       print(e);
                     }
@@ -171,26 +169,56 @@ class _CandidateJobDetailsScreenState extends State<CandidateJobDetailsScreen> {
               SizedBox(
                 height: 350.0,
                 width: 20.0,
-                child: GoogleMap(
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  children: [
+                    GoogleMap(
 
-                  cameraTargetBounds: CameraTargetBounds.unbounded,
-                  indoorViewEnabled: true,
-                 zoomGesturesEnabled: true,
-                  gestureRecognizers: Set()
-                    ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
-                    ..add(Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
-                    ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
-                    ..add(Factory<VerticalDragGestureRecognizer>(
-                            () => VerticalDragGestureRecognizer())),
-                  onMapCreated: _onMapCreated,
-                  initialCameraPosition: CameraPosition(
-                    target: LatLng(
-                       double.parse(widget.jobOffer.latitude),
-                       double.parse(widget.jobOffer.longitude),
+                      cameraTargetBounds: CameraTargetBounds.unbounded,
+                      indoorViewEnabled: true,
+                      zoomGesturesEnabled: true,
+                      zoomControlsEnabled: false,
+                      gestureRecognizers: Set()
+                        ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
+                        ..add(Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
+                        ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
+                        ..add(Factory<VerticalDragGestureRecognizer>(
+                                () => VerticalDragGestureRecognizer())),
+                      onMapCreated: _onMapCreated,
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(
+                           double.parse(widget.jobOffer.latitude),
+                           double.parse(widget.jobOffer.longitude),
+                        ),
+                        zoom: 10,
+                      ),
+                      markers: Set<Marker>.of(markers.values),
                     ),
-                    zoom: 10,
-                  ),
-                  markers: Set<Marker>.of(markers.values),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: (){
+                          try {
+                            _location.getLocation().then((data) {
+                              _add(data.latitude, data.longitude);
+                              _mapController.animateCamera(
+                                CameraUpdate.newCameraPosition(
+                                  CameraPosition(
+                                    target: LatLng(data.latitude, data.longitude),
+                                    zoom: 10
+                                  ),
+                                ),
+                              );
+                            });
+
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
+                        child: Icon(Icons.my_location),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

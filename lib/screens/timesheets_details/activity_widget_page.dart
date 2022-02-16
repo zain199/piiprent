@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class ActivityWidgetPage extends StatelessWidget {
   const ActivityWidgetPage({Key key}) : super(key: key);
@@ -80,7 +81,7 @@ class ActivityWidgetPage extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.all(10),
                 child: Text(
-                  'Amount',
+                  translate("Amount"),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 ),
               ),
@@ -98,7 +99,7 @@ class ActivityWidgetPage extends StatelessWidget {
                   textStyle:
                       TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
-                child: Text('SUBMIT'),
+                child: Text(translate("button.submit")),
                 onPressed: () {},
               ),
             ),

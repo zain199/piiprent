@@ -48,7 +48,7 @@ android {
         applicationId "com.piiprent"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode flutterVersionCode.toInteger()
+        versionCode 50
         versionName flutterVersionName
 
         ndk {
